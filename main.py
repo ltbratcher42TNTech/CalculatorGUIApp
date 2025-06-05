@@ -28,6 +28,12 @@ def clear_field():
     calculation = ""
     text_result.delete(1.0, "end")
 
+# Adds support to handle number and operator input from the keyboard
+def key_pressed(event):
+    key = event.char
+    if key in "0123456789+-*/()":
+        add_to_calculation(key)
+
 # Initialize the main window for the app, including window title and window size
 root = tk.Tk()
 root.title("Calculator GUI App")
@@ -85,6 +91,9 @@ btn_clear.grid(row=6, column=1, columnspan=2)
 # Create the "=" button
 btn_equals = tk.Button(root, text="=", command=evaluate_calculation, width=11, font=("Arial", 14))
 btn_equals.grid(row=6, column=3, columnspan=2)
+
+# Bind keyboard input to the key_pressed function
+root.bind("<Key>", key_pressed)
 
 # Start the GUI event loop
 root.mainloop()
