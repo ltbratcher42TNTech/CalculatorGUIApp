@@ -28,11 +28,13 @@ def clear_field():
     calculation = ""
     text_result.delete(1.0, "end")
 
-# Adds support to handle number and operator input from the keyboard
+# Adds support to handle number and operator input from the keyboard, as well as a clear button (c)
 def key_pressed(event):
     key = event.char
     if key in "0123456789+-*/()":
         add_to_calculation(key)
+    elif key == "c":
+        clear_field()
 
 # Initialize the main window for the app, including window title and window size
 root = tk.Tk()
