@@ -3,7 +3,7 @@ A simple, interactivr calculator built using Python's `tkinter`, currently suppo
 
 -----------------------------------------------------------
 
-## Features of this app
+## Features of This App
 
 - GUI interface built with `tkinter`
 - This app supports:
@@ -17,9 +17,9 @@ A simple, interactivr calculator built using Python's `tkinter`, currently suppo
 
 -----------------------------------------------------------
 
-## Screenshot of app
+## Screenshot of App
 
-![Calculator GUI](insertfilepath)
+![Calculator GUI App Screenshot](Screenshots/CalculatorApp.png)
 
 -----------------------------------------------------------
 
@@ -38,3 +38,8 @@ cd calculator-gui-app
 ```bash
 python calculator.py
 ```
+-----------------------------------------------------------
+## Built With
+
+Python 3
+Tkinter (standard Python GUI library)
