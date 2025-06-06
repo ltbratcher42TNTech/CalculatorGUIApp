@@ -41,5 +41,5 @@ python calculator.py
 -----------------------------------------------------------
 ## Built With
 
-Python 3
-Tkinter (standard Python GUI library)
+- Python 3
+- Tkinter (standard Python GUI library)
