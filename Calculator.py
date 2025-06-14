@@ -30,6 +30,10 @@ def clear_field():
 
 # Adds support to handle number and operator input from the keyboard, as well as a clear button (c)
 def key_pressed(event):
+    """
+    Handles keyboard input for the calculator.
+    It allows the user to input numbers, operators, and use the clear ('c') button.
+    """
     key = event.char
     if key in "0123456789+-*/()":
         add_to_calculation(key)
