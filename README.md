@@ -1,5 +1,5 @@
 # Calculator GUI App
-A simple, interactivr calculator built using Python's `tkinter`, currently supporting basic arithmetic operations and allows both GUI and keyboard numerical input.
+A simple, interactive calculator built using Python's `tkinter`, currently supporting basic arithmetic operations and allows both GUI and keyboard numerical input.
 
 -----------------------------------------------------------
 
