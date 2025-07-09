@@ -12,7 +12,7 @@ A simple, interactive calculator built using Python's `tkinter`, currently suppo
   - Multiplication `*`
   - Division `/`
   - Parentheses `()`
-- Real-time keyboard input (numbers, operators, `c` for clear)
+- Real-time keyboard input (numbers, operators, `c` for clear, and `enter/return` to evaluate)
 - Basic error handling for invalid expressions
 
 -----------------------------------------------------------
@@ -29,8 +29,8 @@ To use this app, you should:
 1. **Clone this repository**
 
 ```bash
-git clone https://github.com/yourusername/calculator-gui-app.git
-cd calculator-gui-app
+git clone https://github.com/ltbratcher42tntech/CalculatorGUIApp.git
+cd CalculatorGUIApp
 ```
 
 2. **Run the app**
