@@ -1,4 +1,38 @@
 import tkinter as tk
+import ast
+import operator
+
+# Supported operators mapping to avoid eval
+ops = {
+    ast.Add: operator.add,
+    ast.Sub: operator.sub,
+    ast.Mult: operator.mul,
+    ast.Div: operator.truediv,
+    ast.USub: operator.neg, # Dor negative numbers
+}
+
+def safe_eval(expr):
+    # Parse expression into an AST node
+    node = ast.parse(expr, mode='eval')
+
+    def evaluate(node):
+        if isinstance(node, ast.Expression):
+            return evaluate(node.body)
+        elif isinstance(node, ast.Constant):  # For numbers in Python 3.8+
+            return node.value
+        elif isinstance(node, ast.BinOp):
+            left = evaluate(node.left)
+            right = evaluate(node.right)
+            op_func = ops[type(node.op)]
+            return op_func(left, right)
+        elif isinstance(node, ast.UnaryOp):
+            operand = evaluate(node.operand)
+            op_func = ops[type(node.op)]
+            return op_func(operand)
+        else:
+            raise ValueError("Unsupported expression")
+
+    return evaluate(node)
 
 calculation = ""    # Initializing as an empty string
 
@@ -14,13 +48,14 @@ def add_to_calculation(symbol):
 def evaluate_calculation():
     global calculation
     try:
-        result = str(eval(calculation))    # Evaluate using eval()
-        calculation = ""    # Reset calculation string after evaluating
-        text_result.delete(1.0, "end")    # Clear the expression
-        text_result.insert(1.0, result)    # Display the result
-    except:
-        clear_field()   # If there's an error (e.g., invalid input), clear the field
-        text_result.insert(1.0, "Error")    # Then display "Error"
+        result = safe_eval(calculation)
+        calculation = ""  # clear after calculation
+        text_result.delete(1.0, "end")
+        text_result.insert(1.0, str(result))
+    except Exception:
+        clear_field()
+        text_result.insert(1.0, "Error")
+
 
 # Function to clear the current calculation and result
 def clear_field():
@@ -100,6 +135,8 @@ btn_equals.grid(row=6, column=3, columnspan=2)
 
 # Bind keyboard input to the key_pressed function
 root.bind("<Key>", key_pressed)
+root.bind('<Return>', lambda event: evaluate_calculation())
+
 
 # Start the GUI event loop
 root.mainloop()
